@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    entrypoint:
+      - /bin/docker-entrypoint.sh
+    command:
+      - bundle
+      - exec
+      - rails
+      - s
+      - -b
+      - 0.0.0.0
+    init: true
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    env_file: .env
+    networks:
+      - real_time_chat
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7.12
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    networks:
+      - real_time_chat
+networks:
+  real_time_chat:
+    external: true
