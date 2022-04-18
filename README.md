@@ -1,6 +1,6 @@
 # real time chat app
 
-# set up
+# Set up
 ```
 $ cp .env.default .env
 $ docker-compose build

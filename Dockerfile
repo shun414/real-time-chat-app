@@ -7,5 +7,5 @@ WORKDIR /app
 COPY Gemfile .
 COPY Gemfile.lock .
 
-RUN bundle install -j4
 COPY . /app
+RUN bundle install -j4
